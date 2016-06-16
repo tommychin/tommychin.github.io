@@ -85,8 +85,9 @@ begfjaahigfhf
     public static String num2str(long num){
         int shift = new Random().nextInt(16)+49;
         StringBuffer buffer = new StringBuffer();
+		buffer.append((char)(shift+48));//第一个字符表示位移,防止重复
         buffer.append(num);
-        for(int i=0;i<buffer.length();i++){
+        for(int i=1;i<buffer.length();i++){
             buffer.setCharAt(i,(char) (buffer.charAt(i)+shift));
         }
         return buffer.toString();
@@ -104,11 +105,11 @@ begfjaahigfhf
     }
 
 ///////////// out put //////////////////
-jmonriipqonpj
-ehjimddkljikf
-dgihlccjkihjf
-ortswnnuvtsur
-mprqullstrqsq
+fgjlkoffmnlkmg
+cdgihlccjkihje
+jknposjjqrpoqm
+opsutxoovwutvs
+efikjneelmkjlj
 ```
 
 哈哈，是不是马上逼格很高了。
@@ -133,11 +134,11 @@ mprqullstrqsq
         }
 
 //////////// out put /////////////////
-cigek
-bhfea
-lrpol
-qwutr
-ekihg
+nonvsp
+mnmurp
+efemji
+pqpxuu
+bcbjgh
 ```
 
 看起来清爽很多。
@@ -173,8 +174,9 @@ public class RandomString {
     private  String num2str(long num){
         int shift =random.nextInt(16)+49;
         StringBuffer buffer = new StringBuffer();
+		buffer.append((char)(shift+48));//第一个字符表示位移,防止重复
         buffer.append(num);
-        for(int i=0;i<buffer.length();i++){
+        for(int i=1;i<buffer.length();i++){
             buffer.setCharAt(i,(char) (buffer.charAt(i)+shift));
         }
         return buffer.toString();
