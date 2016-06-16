@@ -3,7 +3,8 @@ title: 陈达的博客
 header-img: img/home-bg.jpg
 email: cendar@126.com
 copyright_name: chenda.me 所有文章转载请注明来源 
-description: "Write your site description here. It will be used as your sites meta description as well!"
+description: "一个80后程序猿的技术博客，记录一些有的没的想法。"
+keywords: "技术,程序猿,程序员,博客,陈达的博客,原创"
 baseurl: ""
 url: "http://chenda.me"
 twitter_username: SBootstrap
