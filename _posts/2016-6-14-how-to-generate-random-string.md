@@ -80,6 +80,10 @@ begfjaahigfhf
 ....
 第17种：0->q      1->r      2->s     ....     9->z       位移65
 
+具体替换策略如下图
+
+[![替换策略流程图](http://7xvhwc.com1.z0.glb.clouddn.com/random-str-demo.gif "替换策略流程图")](http://7xvhwc.com1.z0.glb.clouddn.com/random-str-demo.gif "替换策略流程图")
+
 我们对替换的方法进行改进，每次使用49~65之间的随机位移
 
 ```java
