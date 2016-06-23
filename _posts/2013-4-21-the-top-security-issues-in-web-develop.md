@@ -4,6 +4,8 @@ tags:
 layout: post
 title: WEB网站常见漏洞及预防
 category: null
+keywords: WEB网站常见漏洞,SQL注入,XSS注入,CSRF,密码和账户保护
+description: 本片文章总结了在WEB开发中常见的一些问题，如SQL注入，XSS注入以及对应的处理方式，同时总结了一些开发规范和帐号的保护方法。
 ---
 
 ### 注入漏洞
