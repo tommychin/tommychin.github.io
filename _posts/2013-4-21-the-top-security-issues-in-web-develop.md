@@ -151,7 +151,9 @@ XSS 即 Cross-site scripting，通常简称为XSS或跨站脚本或跨站脚本�
 
 
 ### 请求伪造漏洞
+
 #### CSRF漏洞
+
 CSRF（Cross-site request forgery），中文名称：跨站请求伪造，也被称为：one click attack/session riding，缩写为：CSRF/XSRF。
 
 攻击者盗用了你的身份，以你的名义发送恶意请求。
@@ -234,12 +236,11 @@ cookie的hash值，随机值,UUID ，验证码（太重量级，普通业务不�
 应对方式就是对md5方法添加自己的规则或密钥，这个过程一般被称为加盐，这里的密钥一般也被叫做salt。
 常见的加盐方法：(这里的salt是某个特定字符串，可根据业务自行指定)
 
-```java
+```php
 md5( $password + $salt )
 md5( $password + md5($salt))
 md5( md5($password) + md5($salt))
 ```
-
 
 #### 帐号保护
 
