@@ -3,11 +3,11 @@ tags:
   - security
 layout: post
 title: WEB网站常见漏洞及预防
-category: 
+category: null
 ---
 
 ### 注入漏洞
-注入漏洞是利用某些输入或者资料输入特性以导入某些资料或者代码，造成目标系统操作崩溃的电脑漏洞。通常这些漏洞安全隐患是由不充分的输入确认及其他种种因素造成的。
+注入漏洞是利用某种资料输入的特性以导入某些资料或者代码，造成目标系统的部分权限或者导致程序异常的漏洞。通常这些漏洞安全隐患是由不充分的输入确认及其他种种因素造成的。
 
 根据注入的目标，常见的危害比较大的有以下几种：
 
@@ -69,7 +69,7 @@ SELECT * FROM users WHERE name = ${userName} and pw = ${userName};
 
 ```sql
 --正确
-SELECT * FROM ${table_name}  
+SELECT * FROM ${table_name}
 ```
 
 在MyBatis中还有一点需要注意的是like的用法。因为like匹配一般是用户的输入内容，同时又需要添加百分号或下划线去模糊匹配，极易用错造成SQL注入，例如：
@@ -81,7 +81,7 @@ SELECT * FROM users WHERE name  like '%'||'#{param}'||'%';
 SELECT * FROM users WHERE name  like CONCAT('%',#{param},'%');
 --错误语法
 SELECT * FROM users WHERE name like '%${param}%';
- ```
+```
 
 #### XSS注入
 XSS 即 Cross-site scripting，通常简称为XSS或跨站脚本或跨站脚本攻击 是一种网站应用程序的安全漏洞攻击，是代码注入的一种。
@@ -100,7 +100,6 @@ XSS 即 Cross-site scripting，通常简称为XSS或跨站脚本或跨站脚本�
 <div><%=request.getAttribute("user_input_content")%></div>
 ```
 
-
 上面的两行代码分别展示了HTML展示用户数据的2种情况，对于这2种情况，假设用户输入的分别是：
 
 ```javascript
@@ -108,11 +107,11 @@ XSS 即 Cross-site scripting，通常简称为XSS或跨站脚本或跨站脚本�
 ```
 
  和
- 
- ```javascript
+
+```javascript
 <script>alert(document.cookie)</script>
 ```
- 
+
 则Javascript脚本被执行。
 
 **主要危害：**
@@ -139,13 +138,15 @@ XSS 即 Cross-site scripting，通常简称为XSS或跨站脚本或跨站脚本�
 <div>${user_input_content}</div>
 ```
 
-上面的2种正确处理方式会转义危险字符 如 < 变成 &lt; > 变成&gt;等;
+上面的2种正确处理方式会转义危险字符 如 `<` 转义为 `&lt;` , `>` 转义为`&gt;`等;
 
 同时，在java中则可以直接使用ESAPI框架做处理，直接将所有的内容转换为HTML编码：
 
 ```html
 <!--正确-->
-<div><%=ESAPI.encoder().encodeForHTML(request.getAttribute("user_input_content"))%></div>
+<div>
+  <%=ESAPI.encoder().encodeForHTML(request.getAttribute("user_input_content"))%>
+</div>
 ```
 
 
@@ -169,7 +170,7 @@ CSRF能够做的事情包括：以你名义发送邮件，发消息，盗取你�
 
 原因是银行网站A违反了HTTP规范，使用GET请求更新资源(但实际上即使POST请求，仍不能根本杜绝)。
 
-在访问危险网站B的之前，你已经登录了银行网站A，而B中的<img>以GET的方式请求第三方资源（这里的第三方就是指银行网站了，原本这是一个合法的请求，但这里被不法分子利用了），
+在访问危险网站B的之前，你已经登录了银行网站A，而B中的`<img>`以GET的方式请求第三方资源（这里的第三方就是指银行网站了，原本这是一个合法的请求，但这里被不法分子利用了），
 
 所以你的浏览器会带上你的银行网站A的Cookie发出Get请求，去获取资源`http://www.mybank.com/Transfer.php?toBankId=11&money=1000`
 
@@ -189,7 +190,6 @@ CSRF能够做的事情包括：以你名义发送邮件，发消息，盗取你�
 
 cookie的hash值，随机值,UUID ，验证码（太重量级，普通业务不适用）等。
 
- 
 
 ### 其他注意事项
 以下为在以前的开发过程中遇到的若干问题，在此总结一下。
@@ -234,7 +234,7 @@ cookie的hash值，随机值,UUID ，验证码（太重量级，普通业务不�
 应对方式就是对md5方法添加自己的规则或密钥，这个过程一般被称为加盐，这里的密钥一般也被叫做salt。
 常见的加盐方法：(这里的salt是某个特定字符串，可根据业务自行指定)
 
-```php
+```java
 md5( $password + $salt )
 md5( $password + md5($salt))
 md5( md5($password) + md5($salt))
